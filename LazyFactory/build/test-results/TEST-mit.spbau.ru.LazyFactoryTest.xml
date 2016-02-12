@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="mit.spbau.ru.LazyFactoryTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2016-02-11T21:46:54" hostname="amazinghorse-pc" time="0.002">
+<testsuite name="mit.spbau.ru.LazyFactoryTest" tests="6" skipped="0" failures="0" errors="0" timestamp="2016-02-12T23:50:22" hostname="amazinghorse-pc" time="0.135">
   <properties/>
-  <testcase name="easyTest" classname="mit.spbau.ru.LazyFactoryTest" time="0.002"/>
+  <testcase name="createLazyFailTest" classname="mit.spbau.ru.LazyFactoryTest" time="0.002"/>
+  <testcase name="createLazyConcurrentTestFail" classname="mit.spbau.ru.LazyFactoryTest" time="0.001"/>
+  <testcase name="createLazyConcurrentAtomicTest" classname="mit.spbau.ru.LazyFactoryTest" time="0.127"/>
+  <testcase name="createLazyTest" classname="mit.spbau.ru.LazyFactoryTest" time="0.0"/>
+  <testcase name="createLazyConcurrentAtomicTestFail" classname="mit.spbau.ru.LazyFactoryTest" time="0.0"/>
+  <testcase name="createLazyConcurrentTest" classname="mit.spbau.ru.LazyFactoryTest" time="0.002"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
