@@ -29,13 +29,16 @@ public class LazyFactoryTest {
     }
 
     private static class NullSupplier implements Supplier<Integer> {
+        private boolean firstTime = true;
         @Override
         public Integer get() {
+            assertTrue(firstTime);
+            firstTime = false;
             return null;
         }
     }
 
-    private void multiThreadTest(Lazy<Integer> lazy) {
+    private void multiThreadTest(Lazy<Integer> lazy) throws InterruptedException {
         ArrayList<Thread> threadList = new ArrayList<>();
         for (int i = 0; i < 100; i++) {
             threadList.add(new Thread(() -> {
@@ -48,12 +51,7 @@ public class LazyFactoryTest {
             threadList.get(i).start();
         }
         for (int i = 0; i < 100; i++) {
-            try {
-                threadList.get(i).join();
-            } catch (InterruptedException exc) {
-                exc.printStackTrace();
-                throw new AssertionError();
-            }
+            threadList.get(i).join();
         }
     }
 
@@ -67,7 +65,7 @@ public class LazyFactoryTest {
     }
 
     @Test
-    public void createLazyConcurrentTest() {
+    public void createLazyConcurrentTest() throws InterruptedException {
         IncrementSupplier incrementSupplier = new IncrementSupplier();
         Lazy<Integer> lazy = LazyFactory.createLazyConcurrent(incrementSupplier);
         incrementSupplier.allowExecuting();
@@ -75,7 +73,7 @@ public class LazyFactoryTest {
     }
 
     @Test
-    public void createLazyConcurrentAtomicTest() {
+    public void createLazyConcurrentAtomicTest() throws InterruptedException {
         IncrementSupplier incrementSupplier = new IncrementSupplier();
         Lazy<Integer> lazy = LazyFactory.createLazyConcurrentAtomic(incrementSupplier);
         incrementSupplier.allowExecuting();
@@ -84,10 +82,9 @@ public class LazyFactoryTest {
 
     @Test
     public void nullTest() {
-        NullSupplier nullSupplier = new NullSupplier();
-        Lazy<Integer> lazy = LazyFactory.createLazy(nullSupplier);
-        Lazy<Integer> lazyC = LazyFactory.createLazyConcurrent(nullSupplier);
-        Lazy<Integer> lazyCA = LazyFactory.createLazyConcurrentAtomic(nullSupplier);
+        Lazy<Integer> lazy = LazyFactory.createLazy(new NullSupplier());
+        Lazy<Integer> lazyC = LazyFactory.createLazyConcurrent(new NullSupplier());
+        Lazy<Integer> lazyCA = LazyFactory.createLazyConcurrentAtomic(new NullSupplier());
         assertEquals(null, lazy.get());
         assertEquals(null, lazyC.get());
         assertEquals(null, lazyCA.get());
@@ -96,5 +93,3 @@ public class LazyFactoryTest {
         assertEquals(null, lazyCA.get());
     }
 }
-
-

@@ -48,7 +48,7 @@ public class LazyFactory {
 
     private static class AtomicLazy<T> implements Lazy<T> {
         private volatile Object result = LazyFactory.DEFAULT_UTIL_OBJ;
-        private static final AtomicReferenceFieldUpdater<AtomicLazy, Object> updater =
+        private static final AtomicReferenceFieldUpdater<AtomicLazy, Object> UPDATER =
                         AtomicReferenceFieldUpdater.newUpdater(AtomicLazy.class, Object.class, "result");
         private final Supplier<T> supplier;
 
@@ -59,7 +59,7 @@ public class LazyFactory {
         @Override
         public T get() {
             if (result == LazyFactory.DEFAULT_UTIL_OBJ) {
-                updater.compareAndSet(this, LazyFactory.DEFAULT_UTIL_OBJ, supplier.get());
+                UPDATER.compareAndSet(this, LazyFactory.DEFAULT_UTIL_OBJ, supplier.get());
             }
             return (T) result;
         }
