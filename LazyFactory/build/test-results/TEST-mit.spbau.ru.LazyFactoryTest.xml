@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="mit.spbau.ru.LazyFactoryTest" tests="6" skipped="0" failures="0" errors="0" timestamp="2016-02-12T23:50:22" hostname="amazinghorse-pc" time="0.135">
+<testsuite name="mit.spbau.ru.LazyFactoryTest" tests="7" skipped="0" failures="0" errors="0" timestamp="2016-02-14T13:50:04" hostname="amazinghorse-pc" time="0.318">
   <properties/>
+  <testcase name="nullTest" classname="mit.spbau.ru.LazyFactoryTest" time="0.016"/>
   <testcase name="createLazyFailTest" classname="mit.spbau.ru.LazyFactoryTest" time="0.002"/>
   <testcase name="createLazyConcurrentTestFail" classname="mit.spbau.ru.LazyFactoryTest" time="0.001"/>
-  <testcase name="createLazyConcurrentAtomicTest" classname="mit.spbau.ru.LazyFactoryTest" time="0.127"/>
+  <testcase name="createLazyConcurrentAtomicTest" classname="mit.spbau.ru.LazyFactoryTest" time="0.164"/>
   <testcase name="createLazyTest" classname="mit.spbau.ru.LazyFactoryTest" time="0.0"/>
-  <testcase name="createLazyConcurrentAtomicTestFail" classname="mit.spbau.ru.LazyFactoryTest" time="0.0"/>
-  <testcase name="createLazyConcurrentTest" classname="mit.spbau.ru.LazyFactoryTest" time="0.002"/>
+  <testcase name="createLazyConcurrentAtomicTestFail" classname="mit.spbau.ru.LazyFactoryTest" time="0.001"/>
+  <testcase name="createLazyConcurrentTest" classname="mit.spbau.ru.LazyFactoryTest" time="0.128"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

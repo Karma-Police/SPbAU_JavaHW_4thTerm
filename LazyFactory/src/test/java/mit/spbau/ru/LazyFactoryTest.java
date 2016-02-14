@@ -28,13 +28,24 @@ public class LazyFactoryTest {
         }
     }
 
+    private static class NullSupplier implements Supplier<Integer> {
+        @Override
+        public Integer get() {
+            return null;
+        }
+    }
+
     private void multiThreadTest(Lazy<Integer> lazy) {
         ArrayList<Thread> threadList = new ArrayList<>();
         for (int i = 0; i < 100; i++) {
-            threadList.add(new Thread(() -> assertEquals(lazy.get(), (Integer) 1)));
+            threadList.add(new Thread(() -> {
+                    assertEquals((Integer) 1, lazy.get());
+                    assertEquals((Integer) 1, lazy.get());
+                    assertEquals((Integer) 1, lazy.get());
+                }));
         }
         for (int i = 0; i < 100; i++) {
-            threadList.get(i).run();
+            threadList.get(i).start();
         }
         for (int i = 0; i < 100; i++) {
             try {
@@ -51,16 +62,8 @@ public class LazyFactoryTest {
         IncrementSupplier incrementSupplier = new IncrementSupplier();
         Lazy<Integer> lazy = LazyFactory.createLazy(incrementSupplier);
         incrementSupplier.allowExecuting();
-        assertEquals(lazy.get(), (Integer) 1);
-        assertEquals(lazy.get(), (Integer) 1);
-        assertEquals(lazy.get(), (Integer) 1);
-    }
-
-    @Test(expected = AssertionError.class)
-    public void createLazyFailTest() {
-        IncrementSupplier incrementSupplier = new IncrementSupplier();
-        Lazy<Integer> lazy = LazyFactory.createLazy(incrementSupplier);
-        lazy.get();
+        assertEquals((Integer) 1, lazy.get());
+        assertEquals((Integer) 1, lazy.get());
     }
 
     @Test
@@ -71,13 +74,6 @@ public class LazyFactoryTest {
         multiThreadTest(lazy);
     }
 
-    @Test(expected = AssertionError.class)
-    public void createLazyConcurrentTestFail() {
-        IncrementSupplier incrementSupplier = new IncrementSupplier();
-        Lazy<Integer> lazy = LazyFactory.createLazyConcurrent(incrementSupplier);
-        lazy.get();
-    }
-
     @Test
     public void createLazyConcurrentAtomicTest() {
         IncrementSupplier incrementSupplier = new IncrementSupplier();
@@ -86,11 +82,18 @@ public class LazyFactoryTest {
         multiThreadTest(lazy);
     }
 
-    @Test(expected = AssertionError.class)
-    public void createLazyConcurrentAtomicTestFail() {
-        IncrementSupplier incrementSupplier = new IncrementSupplier();
-        Lazy<Integer> lazy = LazyFactory.createLazyConcurrentAtomic(incrementSupplier);
-        lazy.get();
+    @Test
+    public void nullTest() {
+        NullSupplier nullSupplier = new NullSupplier();
+        Lazy<Integer> lazy = LazyFactory.createLazy(nullSupplier);
+        Lazy<Integer> lazyC = LazyFactory.createLazyConcurrent(nullSupplier);
+        Lazy<Integer> lazyCA = LazyFactory.createLazyConcurrentAtomic(nullSupplier);
+        assertEquals(null, lazy.get());
+        assertEquals(null, lazyC.get());
+        assertEquals(null, lazyCA.get());
+        assertEquals(null, lazy.get());
+        assertEquals(null, lazyC.get());
+        assertEquals(null, lazyCA.get());
     }
 }
 

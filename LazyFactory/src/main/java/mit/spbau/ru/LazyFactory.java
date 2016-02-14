@@ -8,15 +8,15 @@ import java.util.function.Supplier;
  */
 
 public class LazyFactory {
-    private final static Object DEFAULD_UTIL_OBJ = new Object();
+    private final static Object DEFAULT_UTIL_OBJ = new Object();
 
     public static <T> Lazy<T> createLazy(Supplier<T> supplier) {
         return new Lazy<T>() {
-            private Object result = LazyFactory.DEFAULD_UTIL_OBJ;
+            private Object result = LazyFactory.DEFAULT_UTIL_OBJ;
 
             @Override
             public T get() {
-                if (result == LazyFactory.DEFAULD_UTIL_OBJ) {
+                if (result == LazyFactory.DEFAULT_UTIL_OBJ) {
                     result = supplier.get();
                 }
                 return (T) result;
@@ -26,13 +26,13 @@ public class LazyFactory {
 
     public static <T> Lazy<T> createLazyConcurrent(Supplier<T> supplier) {
         return new Lazy<T>() {
-            private volatile Object result = LazyFactory.DEFAULD_UTIL_OBJ;
+            private volatile Object result = LazyFactory.DEFAULT_UTIL_OBJ;
 
             @Override
             public T get() {
-                if (result == LazyFactory.DEFAULD_UTIL_OBJ) {
+                if (result == LazyFactory.DEFAULT_UTIL_OBJ) {
                     synchronized (this) {
-                        if (result == LazyFactory.DEFAULD_UTIL_OBJ) {
+                        if (result == LazyFactory.DEFAULT_UTIL_OBJ) {
                             result = supplier.get();
                         }
                     }
@@ -47,8 +47,10 @@ public class LazyFactory {
     }
 
     private static class AtomicLazy<T> implements Lazy<T> {
-        private Supplier<T> supplier;
-        private volatile Object result = LazyFactory.DEFAULD_UTIL_OBJ;
+        private volatile Object result = LazyFactory.DEFAULT_UTIL_OBJ;
+        private static final AtomicReferenceFieldUpdater<AtomicLazy, Object> updator =
+                        AtomicReferenceFieldUpdater.newUpdater(AtomicLazy.class, Object.class, "result");
+        private final Supplier<T> supplier;
 
         public AtomicLazy(Supplier<T> supplier) {
             this.supplier = supplier;
@@ -56,11 +58,10 @@ public class LazyFactory {
 
         @Override
         public T get() {
-            AtomicReferenceFieldUpdater<AtomicLazy, Object> updator =
-                    AtomicReferenceFieldUpdater.newUpdater(AtomicLazy.class, Object.class, "result");
-            updator.compareAndSet(this, LazyFactory.DEFAULD_UTIL_OBJ, supplier.get());
+            if (result == LazyFactory.DEFAULT_UTIL_OBJ) {
+                updator.compareAndSet(this, LazyFactory.DEFAULT_UTIL_OBJ, supplier.get());
+            }
             return (T) result;
         }
     }
 }
-
