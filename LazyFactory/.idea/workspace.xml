@@ -34,40 +34,30 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="LazyFactoryTest.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="LazyFactoryTest.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/java/mit/spbau/ru/LazyFactoryTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.32142857">
-              <caret line="36" column="0" selection-start-line="36" selection-start-column="0" selection-end-line="36" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="41" column="0" selection-start-line="41" selection-start-column="0" selection-end-line="41" selection-end-column="0" />
               <folding>
                 <element signature="docComment;class#LazyFactoryTest#0" expanded="false" />
-                <element signature="class#IncrementSupplier#0;class#LazyFactoryTest#0" expanded="false" />
-                <element signature="method#get#0;class#IncrementSupplier#0;class#LazyFactoryTest#0" expanded="false" />
                 <element signature="class#NullSupplier#0;class#LazyFactoryTest#0" expanded="false" />
-                <element signature="method#multiThreadTest#0;class#LazyFactoryTest#0" expanded="false" />
-                <element signature="method#createLazyTest#0;class#LazyFactoryTest#0" expanded="false" />
                 <element signature="method#createLazyConcurrentTest#0;class#LazyFactoryTest#0" expanded="false" />
                 <element signature="method#createLazyConcurrentAtomicTest#0;class#LazyFactoryTest#0" expanded="false" />
+                <element signature="method#nullTest#0;class#LazyFactoryTest#0" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="LazyFactory.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="LazyFactory.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/mit/spbau/ru/LazyFactory.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.51428574">
+              <caret line="50" column="82" selection-start-line="50" selection-start-column="82" selection-end-line="50" selection-end-column="82" />
               <folding>
-                <element signature="docComment;class#LazyFactory#0" expanded="false" />
-                <element signature="method#createLazy#0;class#LazyFactory#0" expanded="false" />
-                <element signature="class#345:658" expanded="false" />
-                <element signature="method#get#0;class#345:658" expanded="false" />
-                <element signature="method#createLazyConcurrent#0;class#LazyFactory#0" expanded="false" />
-                <element signature="class#761:1251" expanded="false" />
-                <element signature="method#get#0;class#761:1251" expanded="false" />
-                <element signature="class#AtomicLazy#0;class#LazyFactory#0" expanded="false" />
-                <element signature="method#get#0;class#AtomicLazy#0;class#LazyFactory#0" expanded="false" />
+                <element signature="e#1339#1340#0" expanded="true" />
+                <element signature="e#1388#1389#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -776,7 +766,7 @@
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.39979655" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.39979655" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -812,13 +802,10 @@
           <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
           <folding>
             <element signature="docComment;class#LazyFactoryTest#0" expanded="false" />
-            <element signature="class#IncrementSupplier#0;class#LazyFactoryTest#0" expanded="false" />
-            <element signature="method#get#0;class#IncrementSupplier#0;class#LazyFactoryTest#0" expanded="false" />
             <element signature="class#NullSupplier#0;class#LazyFactoryTest#0" expanded="false" />
-            <element signature="method#multiThreadTest#0;class#LazyFactoryTest#0" expanded="false" />
-            <element signature="method#createLazyTest#0;class#LazyFactoryTest#0" expanded="false" />
             <element signature="method#createLazyConcurrentTest#0;class#LazyFactoryTest#0" expanded="false" />
             <element signature="method#createLazyConcurrentAtomicTest#0;class#LazyFactoryTest#0" expanded="false" />
+            <element signature="method#nullTest#0;class#LazyFactoryTest#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -828,15 +815,8 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="docComment;class#LazyFactory#0" expanded="false" />
-            <element signature="method#createLazy#0;class#LazyFactory#0" expanded="false" />
-            <element signature="class#345:658" expanded="false" />
-            <element signature="method#get#0;class#345:658" expanded="false" />
-            <element signature="method#createLazyConcurrent#0;class#LazyFactory#0" expanded="false" />
-            <element signature="class#761:1251" expanded="false" />
-            <element signature="method#get#0;class#761:1251" expanded="false" />
-            <element signature="class#AtomicLazy#0;class#LazyFactory#0" expanded="false" />
-            <element signature="method#get#0;class#AtomicLazy#0;class#LazyFactory#0" expanded="false" />
+            <element signature="e#1339#1340#0" expanded="true" />
+            <element signature="e#1388#1389#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -871,13 +851,10 @@
           <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
           <folding>
             <element signature="docComment;class#LazyFactoryTest#0" expanded="false" />
-            <element signature="class#IncrementSupplier#0;class#LazyFactoryTest#0" expanded="false" />
-            <element signature="method#get#0;class#IncrementSupplier#0;class#LazyFactoryTest#0" expanded="false" />
             <element signature="class#NullSupplier#0;class#LazyFactoryTest#0" expanded="false" />
-            <element signature="method#multiThreadTest#0;class#LazyFactoryTest#0" expanded="false" />
-            <element signature="method#createLazyTest#0;class#LazyFactoryTest#0" expanded="false" />
             <element signature="method#createLazyConcurrentTest#0;class#LazyFactoryTest#0" expanded="false" />
             <element signature="method#createLazyConcurrentAtomicTest#0;class#LazyFactoryTest#0" expanded="false" />
+            <element signature="method#nullTest#0;class#LazyFactoryTest#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -887,15 +864,8 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="9" column="0" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
           <folding>
-            <element signature="docComment;class#LazyFactory#0" expanded="false" />
-            <element signature="method#createLazy#0;class#LazyFactory#0" expanded="false" />
-            <element signature="class#345:658" expanded="false" />
-            <element signature="method#get#0;class#345:658" expanded="false" />
-            <element signature="method#createLazyConcurrent#0;class#LazyFactory#0" expanded="false" />
-            <element signature="class#761:1251" expanded="false" />
-            <element signature="method#get#0;class#761:1251" expanded="false" />
-            <element signature="class#AtomicLazy#0;class#LazyFactory#0" expanded="false" />
-            <element signature="method#get#0;class#AtomicLazy#0;class#LazyFactory#0" expanded="false" />
+            <element signature="e#1339#1340#0" expanded="true" />
+            <element signature="e#1388#1389#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -930,13 +900,10 @@
           <caret line="6" column="0" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
           <folding>
             <element signature="docComment;class#LazyFactoryTest#0" expanded="false" />
-            <element signature="class#IncrementSupplier#0;class#LazyFactoryTest#0" expanded="false" />
-            <element signature="method#get#0;class#IncrementSupplier#0;class#LazyFactoryTest#0" expanded="false" />
             <element signature="class#NullSupplier#0;class#LazyFactoryTest#0" expanded="false" />
-            <element signature="method#multiThreadTest#0;class#LazyFactoryTest#0" expanded="false" />
-            <element signature="method#createLazyTest#0;class#LazyFactoryTest#0" expanded="false" />
             <element signature="method#createLazyConcurrentTest#0;class#LazyFactoryTest#0" expanded="false" />
             <element signature="method#createLazyConcurrentAtomicTest#0;class#LazyFactoryTest#0" expanded="false" />
+            <element signature="method#nullTest#0;class#LazyFactoryTest#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -946,15 +913,8 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="6" column="0" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
           <folding>
-            <element signature="docComment;class#LazyFactory#0" expanded="false" />
-            <element signature="method#createLazy#0;class#LazyFactory#0" expanded="false" />
-            <element signature="class#345:658" expanded="false" />
-            <element signature="method#get#0;class#345:658" expanded="false" />
-            <element signature="method#createLazyConcurrent#0;class#LazyFactory#0" expanded="false" />
-            <element signature="class#761:1251" expanded="false" />
-            <element signature="method#get#0;class#761:1251" expanded="false" />
-            <element signature="class#AtomicLazy#0;class#LazyFactory#0" expanded="false" />
-            <element signature="method#get#0;class#AtomicLazy#0;class#LazyFactory#0" expanded="false" />
+            <element signature="e#1339#1340#0" expanded="true" />
+            <element signature="e#1388#1389#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1013,37 +973,27 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/mit/spbau/ru/LazyFactory.java">
+    <entry file="file://$PROJECT_DIR$/src/test/java/mit/spbau/ru/LazyFactoryTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+          <caret line="41" column="0" selection-start-line="41" selection-start-column="0" selection-end-line="41" selection-end-column="0" />
           <folding>
-            <element signature="docComment;class#LazyFactory#0" expanded="false" />
-            <element signature="method#createLazy#0;class#LazyFactory#0" expanded="false" />
-            <element signature="class#345:658" expanded="false" />
-            <element signature="method#get#0;class#345:658" expanded="false" />
-            <element signature="method#createLazyConcurrent#0;class#LazyFactory#0" expanded="false" />
-            <element signature="class#761:1251" expanded="false" />
-            <element signature="method#get#0;class#761:1251" expanded="false" />
-            <element signature="class#AtomicLazy#0;class#LazyFactory#0" expanded="false" />
-            <element signature="method#get#0;class#AtomicLazy#0;class#LazyFactory#0" expanded="false" />
+            <element signature="docComment;class#LazyFactoryTest#0" expanded="false" />
+            <element signature="class#NullSupplier#0;class#LazyFactoryTest#0" expanded="false" />
+            <element signature="method#createLazyConcurrentTest#0;class#LazyFactoryTest#0" expanded="false" />
+            <element signature="method#createLazyConcurrentAtomicTest#0;class#LazyFactoryTest#0" expanded="false" />
+            <element signature="method#nullTest#0;class#LazyFactoryTest#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/mit/spbau/ru/LazyFactoryTest.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/mit/spbau/ru/LazyFactory.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.32142857">
-          <caret line="36" column="0" selection-start-line="36" selection-start-column="0" selection-end-line="36" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.51428574">
+          <caret line="50" column="82" selection-start-line="50" selection-start-column="82" selection-end-line="50" selection-end-column="82" />
           <folding>
-            <element signature="docComment;class#LazyFactoryTest#0" expanded="false" />
-            <element signature="class#IncrementSupplier#0;class#LazyFactoryTest#0" expanded="false" />
-            <element signature="method#get#0;class#IncrementSupplier#0;class#LazyFactoryTest#0" expanded="false" />
-            <element signature="class#NullSupplier#0;class#LazyFactoryTest#0" expanded="false" />
-            <element signature="method#multiThreadTest#0;class#LazyFactoryTest#0" expanded="false" />
-            <element signature="method#createLazyTest#0;class#LazyFactoryTest#0" expanded="false" />
-            <element signature="method#createLazyConcurrentTest#0;class#LazyFactoryTest#0" expanded="false" />
-            <element signature="method#createLazyConcurrentAtomicTest#0;class#LazyFactoryTest#0" expanded="false" />
+            <element signature="e#1339#1340#0" expanded="true" />
+            <element signature="e#1388#1389#0" expanded="true" />
           </folding>
         </state>
       </provider>
