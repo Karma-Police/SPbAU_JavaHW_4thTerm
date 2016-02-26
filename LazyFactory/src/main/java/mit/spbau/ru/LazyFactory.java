@@ -12,11 +12,11 @@ public class LazyFactory {
 
     public static <T> Lazy<T> createLazy(Supplier<T> supplier) {
         return new Lazy<T>() {
-            private Object result = LazyFactory.DEFAULT_UTIL_OBJ;
+            private Object result = DEFAULT_UTIL_OBJ;
 
             @Override
             public T get() {
-                if (result == LazyFactory.DEFAULT_UTIL_OBJ) {
+                if (result == DEFAULT_UTIL_OBJ) {
                     result = supplier.get();
                 }
                 return (T) result;
@@ -26,13 +26,13 @@ public class LazyFactory {
 
     public static <T> Lazy<T> createLazyConcurrent(Supplier<T> supplier) {
         return new Lazy<T>() {
-            private volatile Object result = LazyFactory.DEFAULT_UTIL_OBJ;
+            private volatile Object result = DEFAULT_UTIL_OBJ;
 
             @Override
             public T get() {
-                if (result == LazyFactory.DEFAULT_UTIL_OBJ) {
+                if (result == DEFAULT_UTIL_OBJ) {
                     synchronized (this) {
-                        if (result == LazyFactory.DEFAULT_UTIL_OBJ) {
+                        if (result == DEFAULT_UTIL_OBJ) {
                             result = supplier.get();
                         }
                     }
@@ -47,7 +47,7 @@ public class LazyFactory {
     }
 
     private static class AtomicLazy<T> implements Lazy<T> {
-        private volatile Object result = LazyFactory.DEFAULT_UTIL_OBJ;
+        private volatile Object result = DEFAULT_UTIL_OBJ;
         private static final AtomicReferenceFieldUpdater<AtomicLazy, Object> UPDATER =
                         AtomicReferenceFieldUpdater.newUpdater(AtomicLazy.class, Object.class, "result");
         private final Supplier<T> supplier;
@@ -58,8 +58,8 @@ public class LazyFactory {
 
         @Override
         public T get() {
-            if (result == LazyFactory.DEFAULT_UTIL_OBJ) {
-                UPDATER.compareAndSet(this, LazyFactory.DEFAULT_UTIL_OBJ, supplier.get());
+            if (result == DEFAULT_UTIL_OBJ) {
+                UPDATER.compareAndSet(this, DEFAULT_UTIL_OBJ, supplier.get());
             }
             return (T) result;
         }

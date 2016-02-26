@@ -3,6 +3,8 @@ package mit.spbau.ru;
 import org.junit.Test;
 
 import java.util.ArrayList;
+import java.util.concurrent.BrokenBarrierException;
+import java.util.concurrent.CyclicBarrier;
 import java.util.function.Supplier;
 
 import static org.junit.Assert.*;
@@ -40,8 +42,14 @@ public class LazyFactoryTest {
 
     private void multiThreadTest(Lazy<Integer> lazy) throws InterruptedException {
         ArrayList<Thread> threadList = new ArrayList<>();
+        CyclicBarrier barrier = new CyclicBarrier(100);
         for (int i = 0; i < 100; i++) {
             threadList.add(new Thread(() -> {
+                    try {
+                        barrier.await();
+                    } catch (InterruptedException | BrokenBarrierException exc) {
+                        fail();
+                    }
                     assertEquals((Integer) 1, lazy.get());
                     assertEquals((Integer) 1, lazy.get());
                     assertEquals((Integer) 1, lazy.get());
