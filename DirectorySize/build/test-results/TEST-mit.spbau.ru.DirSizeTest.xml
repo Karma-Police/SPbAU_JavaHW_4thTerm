@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="mit.spbau.ru.DirSizeTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2016-03-01T08:39:51" hostname="amazinghorse-pc" time="0.876">
+  <properties/>
+  <testcase name="timeTest" classname="mit.spbau.ru.DirSizeTest" time="0.826"/>
+  <testcase name="simpleTest" classname="mit.spbau.ru.DirSizeTest" time="0.05"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[1036274344
+1036274344
+Fast time: 347,  slow time: 447
+1424
+]]></system-err>
+</testsuite>
