@@ -9,6 +9,6 @@ import org.junit.Test;
 public class Tester {
     @Test
     public void testing() {
-        System.err.print("testing\n");
+        System.err.print("testing\n\n");
     }
 }
