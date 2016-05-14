@@ -1,0 +1,5 @@
+IntelliJ IDEA editor is a powerful tool for
+creating and modifying source code. As any other IDE editor,
+it supports basic features like bookmarks, breakpoints, syntax highlighting, code completion, zooming, folding code
+blocks, etc. There are, however, plenty of advanced features like macros, highlighted TDO items, code analysis,
+intention actions, intelligent and fast navigation, and a lot more.
