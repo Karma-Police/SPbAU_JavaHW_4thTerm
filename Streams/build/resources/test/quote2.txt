@@ -1,0 +1,7 @@
+To configure your editing environment, use the Editor settings page and its child pages.
+There is also
+a Quick Switch Scheme
+command that lets you change color schemes, themes, keymaps, etc. with a couple of keystrokes.
+The editor is tab-based.
+All operations with the editor tabs are available from the context menu of a tab , or from Window
+| Editor tabs node of the main menu .
