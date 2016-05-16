@@ -3,6 +3,7 @@
 .idea/tasks.xml
 .idea/gradle.xml
 .idea/libraries
+.idea/uiDesigner.xml
 .gradle
 gradlew
 gradlew.bat
