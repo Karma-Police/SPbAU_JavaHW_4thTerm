@@ -22,7 +22,7 @@ public class SeederDescription {
         if (ip.length != 4) {
             String msg = "Invalid seeder's ip: " + ip;
             logger.log(Level.SEVERE, msg);
-            throw new IllegalArgumentException(msg);
+            throw new SeederCreatingException(msg);
         } else {
             this.id = ID++;
             this.ip = ip;
@@ -57,5 +57,11 @@ public class SeederDescription {
 
     public boolean isAlive() {
         return isAlive;
+    }
+
+    public static class SeederCreatingException extends IllegalArgumentException {
+        public SeederCreatingException(String msg) {
+            super(msg);
+        }
     }
 }

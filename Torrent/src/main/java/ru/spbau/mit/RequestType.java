@@ -3,13 +3,14 @@ package ru.spbau.mit;
 /**
  * Created by michael on 15.05.16.
  */
+
 public enum RequestType {
     UNKNOWN(0),
     GET_FILES(1),
     UPLOAD(2),
     GET_FILE_SEEDERS(3),
     UPDATE(4),
-    STAT(4),
+    STAT(5),
     GET_FILE_PART(6);
 
 

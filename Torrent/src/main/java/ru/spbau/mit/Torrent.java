@@ -15,6 +15,7 @@ import java.util.logging.Logger;
 
 public class Torrent {
     public static final long UPDATE_DELAY = 60000;
+    public static final int PART_SIZE = 10 * 1024 * 1024;
 
     private static final Logger logger = Logger.getLogger(Torrent.class.getName());
     private static Torrent instance = null;
@@ -30,10 +31,10 @@ public class Torrent {
         return instance;
     }
 
-    public boolean addSeedToFile(SeederDescription seeder, int fileID) {
+    public boolean addSeederToFile(SeederDescription seeder, int fileID) {
         FileDescription description = files.get(fileID);
         if (description == null) {
-            logger.log(Level.WARNING, "File with id " + fileID + " not found!");
+            logger.log(Level.WARNING, "Failed to add seeder to file with id=" + fileID + " cause it is not found!");
             return false;
         }
         description.seeders.add(seeder);
@@ -41,6 +42,10 @@ public class Torrent {
     }
 
     public int submitNewFile(@NotNull String name, long size) {
+        if (size < 0) {
+            logger.log(Level.WARNING, "Failed to submit new file cause file size is negative.");
+            return -1;
+        }
         FileDescription file = new FileDescription(size, name);
         files.put(file.id, file);
         return file.id;
@@ -53,7 +58,7 @@ public class Torrent {
     public List<SeederDescription> getSeedersOf(int fileID) {
         FileDescription file = files.get(fileID);
         if (file == null) {
-            logger.log(Level.WARNING, "No file with fileID = " + fileID);
+            logger.log(Level.WARNING, "Failed to get seeders cause the file with fileID = " + fileID + " not found!");
             return null;
         }
         file.seeders.removeIf(seeder -> !seeder.isAlive());

@@ -22,7 +22,7 @@ public class Server {
         this.port = port;
     }
 
-    public synchronized void run() {
+    public synchronized void run(HandlerFactory handlerFactory) {
         if (isRunning) {
             logger.log(Level.WARNING, "Failed to run server cause it is already running!");
             return;
@@ -39,13 +39,15 @@ public class Server {
         executorService.execute(() -> {
             while (isRunning) {
                 try {
-                    executorService.execute(new ClientHandler(serverSocket.accept()));
+                    executorService.execute(handlerFactory.createHandler(serverSocket.accept()));
                 } catch (IOException e) {
                     synchronized (this) {
                         if (!serverSocket.isClosed()) {
                             logger.log(Level.WARNING, "Got an exception while accepting connection : " + e.toString());
                         }
                     }
+                } catch (SeederDescription.SeederCreatingException exc) {
+                    logger.log(Level.WARNING, "Can't create seeder : " + exc.toString());
                 }
             }
         });
@@ -70,4 +72,10 @@ public class Server {
         }
     }
 
+    public synchronized int getPort() {
+        if (serverSocket == null || serverSocket.isClosed()) {
+            return 0;
+        }
+        return serverSocket.getLocalPort();
+    }
 }

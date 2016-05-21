@@ -24,7 +24,7 @@ public class FileDescription {
     public FileDescription(long size, @NotNull String name) {
         if (size <= 0) {
             String msg = "Invalid file size : " + size;
-            logger.log(Level.SEVERE, msg);
+            logger.log(Level.WARNING, msg);
             throw new IllegalArgumentException(msg);
         }
         this.id = ID++;
