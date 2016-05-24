@@ -15,7 +15,7 @@ public class SeederDescription {
 
     public final long id;
     public final byte[] ip;
-    private volatile short port;
+    private volatile int port;
     private volatile boolean isAlive;
 
     public SeederDescription(@NotNull byte[] ip) {
@@ -39,11 +39,11 @@ public class SeederDescription {
         }
     }
 
-    public void setPort(short newPort) {
+    public void setPort(int newPort) {
         port = newPort;
     }
 
-    public short getPort() {
+    public int getPort() {
         return port;
     }
 

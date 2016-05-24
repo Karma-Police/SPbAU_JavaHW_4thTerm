@@ -24,7 +24,7 @@ public enum RequestType {
     }
 
     public static RequestType getServerRequest(int request) {
-        if (request > 0 && request < GET_FILE_SEEDERS.id) {
+        if (request > 0 && request < STAT.id) {
             return values()[request];
         } else {
             return UNKNOWN;

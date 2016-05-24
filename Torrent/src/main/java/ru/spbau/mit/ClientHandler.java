@@ -5,9 +5,9 @@ import org.jetbrains.annotations.NotNull;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
-import java.io.OutputStream;
 import java.net.Socket;
-import java.util.*;
+import java.util.List;
+import java.util.TimerTask;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -36,11 +36,11 @@ public class ClientHandler extends SocketHandler implements Runnable {
         RequestType requestType = RequestType.getServerRequest(inputStream.readByte());
         switch (requestType) {
             case UPDATE:
-                logger.log(Level.FINE, "Got update request from : " + socketInfo);
+                logger.log(Level.INFO, "Got update request from : " + socketInfo);
                 processUpdate(inputStream, outputStream);
                 break;
             case UPLOAD:
-                logger.log(Level.FINE, "Got upload request from : " + socketInfo);
+                logger.log(Level.INFO, "Got upload request from : " + socketInfo);
                 processUpload(inputStream, outputStream);
                 break;
             case GET_FILES:
@@ -58,7 +58,7 @@ public class ClientHandler extends SocketHandler implements Runnable {
 
     private void processUpdate(DataInputStream inputStream, DataOutputStream outputStream) throws IOException {
         timerTask.cancel();
-        short port = inputStream.readShort();
+        int port = inputStream.readInt();
         seeder.setPort(port);
         seeder.resurrect();
         int count = inputStream.readInt();
@@ -68,7 +68,7 @@ public class ClientHandler extends SocketHandler implements Runnable {
             ok &= torrent.addSeederToFile(seeder, id);
         }
         timerTask = new SeederKiller();
-        torrent.timer.schedule(timerTask, Torrent.UPDATE_DELAY);
+        torrent.timer.schedule(timerTask, Torrent.DEATH_DELAY);
         outputStream.writeBoolean(ok);
         outputStream.flush();
     }
@@ -102,8 +102,10 @@ public class ClientHandler extends SocketHandler implements Runnable {
         }
         outputStream.writeInt(seeders.size());
         for (SeederDescription next : seeders) {
-            outputStream.write(next.ip);
-            outputStream.writeShort(next.getPort());
+            for (int i = 0; i < 4; i++) {
+                outputStream.writeByte(next.ip[i]);
+            }
+            outputStream.writeInt(next.getPort());
         }
         outputStream.flush();
     }

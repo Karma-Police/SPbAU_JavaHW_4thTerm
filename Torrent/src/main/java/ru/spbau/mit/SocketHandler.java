@@ -30,9 +30,7 @@ public abstract class SocketHandler implements Runnable {
                 handleRequest(inputStream, outputStream);
             }
         } catch (IOException e) {
-            if (!socket.isClosed()) {
-                logger.log(Level.WARNING, "Got exception : " + e.toString() + ";  from " + socketInfo);
-            }
+            logger.log(Level.INFO, "Got exception : " + e.toString() + ";  from " + socketInfo);
         }
     }
 

@@ -19,6 +19,7 @@ public class FileStatus {
     public final long size;
     public final String name;
     public final Path path;
+    public final int blocks;
     private final BitSet partStatus;
     private final Lock lock;
 
@@ -27,12 +28,13 @@ public class FileStatus {
         this.size = size;
         this.name = name;
         this.path = path;
-        partStatus = new BitSet((int) ((size + Torrent.PART_SIZE - 1) / Torrent.PART_SIZE));
+        blocks = (int) ((size + Torrent.PART_SIZE - 1) / Torrent.PART_SIZE);
+        partStatus = new BitSet(blocks);
         lock = new ReentrantLock();
         if (isDownloaded) {
-            partStatus.set(0, partStatus.size(), true);
+            partStatus.set(0, blocks);
         }
-        logger.log(Level.FINE, "File name: " + name + ", size = " + size + ", split into " + partStatus.size() + "pieces.");
+        logger.log(Level.FINE, "File name: " + name + ", size = " + size + ", split into " + blocks + "pieces.");
     }
 
     public BitSet lock() {
@@ -45,10 +47,27 @@ public class FileStatus {
     }
 
     public int calculatePartSize(int id) {
-        if (id < partStatus.size() - 1) {
+        if (id < blocks - 1) {
             return Torrent.PART_SIZE;
         } else {
-            return (int) (size - Torrent.PART_SIZE * (partStatus.size() - 1));
+            return (int) (size - Torrent.PART_SIZE * (blocks - 1));
         }
+    }
+
+    public int calculateProgress() {
+        lock.lock();
+        int res = 0;
+        for (int i = 0; i < blocks; i++) {
+            res += partStatus.get(i) ? 1 : 0;
+        }
+        lock.unlock();
+        return (int) (100 * res / (double) blocks);
+    }
+
+    public boolean isDownloaded() {
+        lock.lock();
+        boolean res = partStatus.nextClearBit(0) < 0 || partStatus.nextClearBit(0) >= blocks;
+        lock.unlock();
+        return res;
     }
 }

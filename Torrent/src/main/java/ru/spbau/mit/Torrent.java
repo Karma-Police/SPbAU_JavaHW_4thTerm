@@ -14,8 +14,12 @@ import java.util.logging.Logger;
  */
 
 public class Torrent {
-    public static final long UPDATE_DELAY = 60000;
+    public static final long DEATH_DELAY = 6 * 60 * 1000;
+    public static final long UPDATE_DELAY = 5 * 60 * 1000;
     public static final int PART_SIZE = 10 * 1024 * 1024;
+    public static final String HOST_NAME = "localhost";
+    public static final short SERVER_PORT = 8081;
+    public static final String DOWNLOAD_DIRECTORY = "downloads";
 
     private static final Logger logger = Logger.getLogger(Torrent.class.getName());
     private static Torrent instance = null;

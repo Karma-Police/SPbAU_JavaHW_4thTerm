@@ -33,7 +33,7 @@ public class P2PHandler extends SocketHandler {
         RequestType requestType = RequestType.getP2PRequest(inputStream.readByte());
         switch (requestType) {
             case STAT:
-                logger.log(Level.FINE, "Got update request from : " + socketInfo);
+                logger.log(Level.FINE, "Got stat request from : " + socketInfo);
                 processStat(inputStream, outputStream);
                 break;
             case GET_FILE_PART:
@@ -76,7 +76,7 @@ public class P2PHandler extends SocketHandler {
             return;
         }
         BitSet status = fileStatus.lock();
-        if (status.size() >= part || !status.get(part)) {
+        if (fileStatus.blocks <= part || !status.get(part)) {
             logger.log(Level.INFO, "Peer doesn't have required part (" + part + ")");
             fileStatus.unlock();
             return;
@@ -90,4 +90,5 @@ public class P2PHandler extends SocketHandler {
         outputStream.write(buffer);
         outputStream.flush();
     }
+
 }
